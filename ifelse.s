@@ -12,7 +12,7 @@ _main:
   movl $10, %eax;
   cmpl x(%rip), %eax;
   jne else . #the opposite of what we really want to do
-  addl $3, %eax;
+  addl $3, %eax; #body of if statement
   jmp endif
   leave
   ret
