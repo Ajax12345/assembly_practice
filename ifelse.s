@@ -11,7 +11,7 @@ _main:
   subq $16, %rsp
   movl $10, %eax;
   cmpl x(%rip), %eax;
-  je else
+  jne else . #the opposite of what we really want to do
   addl $3, %eax;
   jmp endif
   leave
