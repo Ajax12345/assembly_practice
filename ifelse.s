@@ -25,3 +25,14 @@ else:
 endif:
   leave
   ret
+  
+
+#equivalent to:
+#int x = 10;
+#int a = 10;
+#if(x == a){
+#	a += 3;
+#}
+#else{
+#	a -= 5;
+#}
