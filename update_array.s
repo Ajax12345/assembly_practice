@@ -1,7 +1,9 @@
 .data
-  x:.fill 10, 4
-  index:.int 0
+  x:.int 10, 3, 1, 3, 4
+  index:.int 1
+  val:.int 2
   end:.int 10
+  running_total:.int 0
 
 .text
 .globl _main
@@ -9,23 +11,14 @@ _main:
   pushq %rbp
   movq %rsp, %rbp
   subq $16, %rsp
-  jmp outer_loop
-  leave
-  ret
-
-outer_loop:
-  movl index(%rip), %eax;
-  cmpl end(%rip), %eax
-  jge end_loop
   lea x(%rip), %rdi;
-  mov index(%rip), %rsi;
-  movl index(%rip), %esi
-  movl %esi, (%rdi, %rsi, 4)
-  incl index(%rip)
-  jmp outer_loop
-  leave
-  ret
-
-end_loop:
+  movslq index(%rip), %rsi;
+  movl (%rdi, %rsi, 4), %ecx;
+  incl (%rdi, %rsi, 4);
+  movl (%rdi, %rsi, 4), %eax;
+  movl $1, -4(%rbp)
+  movl -4(%rbp), %eax;
+  movl $7, -8(%rbp)
+  movl -8(%rbp), %eax;
   leave
   ret
